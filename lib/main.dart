@@ -1,8 +1,14 @@
-import 'package:crazy_cake/screens/home_rent_screen.dart';
+
+import 'package:crazy_cake/screens/Otp_verfication.dart';
+import 'package:crazy_cake/screens/home_screen.dart';
+import 'package:crazy_cake/screens/login_screen.dart';
+import 'package:crazy_cake/screens/onboard.dart';
+import 'package:crazy_cake/screens/user_registration.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,15 +17,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: HomeRentScreen(),
-    );
+    return GetMaterialApp(
+   debugShowCheckedModeBanner: false,
+   theme: ThemeData(
+     primarySwatch: Colors.blue,
+     fontFamily: "jost"
+   ),
+   initialRoute: "/",
+    getPages: [
+      GetPage(name: "/", page: () => OnboardPage()),
+      GetPage(name: "/login", page: () => LoginScreen()),
+      GetPage(name: "/home", page: () => HomeScreen()),
+      GetPage(name: "/register" , page: () => UserRegistrationScreen()),
+      GetPage(name: "/otpVerification", page: () => OtpVerficationPage())
+    ]
+      );
   }
 }
-
