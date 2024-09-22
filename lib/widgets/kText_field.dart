@@ -21,7 +21,7 @@ Widget kTextField(String hintText, String labelText) {
             filled: true,
             hintText: hintText,
             labelText: labelText,
-            border: OutlineInputBorder(
+            border: const OutlineInputBorder(
                 borderSide: BorderSide(color: Color(0xff40573A)),
                 borderRadius:
                     BorderRadius.all(Radius.circular(10.0)))),

@@ -1,9 +1,7 @@
-import 'package:crazy_cake/screens/login_screen.dart';
 import 'package:crazy_cake/widgets/animated_dot.dart';
 import 'package:crazy_cake/widgets/onboard_content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class OnboardPage extends StatefulWidget {
   const OnboardPage({super.key});
