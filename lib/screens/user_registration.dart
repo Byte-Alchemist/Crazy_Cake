@@ -1,4 +1,5 @@
 import 'package:crazy_cake/screens/login_screen.dart';
+import 'package:crazy_cake/widgets/kText_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -50,138 +51,20 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
             const SizedBox(
               height: 15,
             ),
-             Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xff40573A), width: 0.2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2), // Shadow color
-                        blurRadius: 5, // Shadow blur effect
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                      hintText: "Enter your Email",
-                      labelText: "Email",
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff40573A)),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-             Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xff40573A), width: 0.2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2), // Shadow color
-                        blurRadius: 5, // Shadow blur effect
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                      hintText: "Phone Number",
-                      labelText: "Phone Number",
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff40573A)),
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-                ),
-              ),
-            ),
+            kTextField("Enter your Email", "Email"),
             const SizedBox(
               height: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                   decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xff40573A), width: 0.2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2), // Shadow color
-                        blurRadius: 5, // Shadow blur effect
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  obscureText: _obscureText,
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _obscureText = !_obscureText;
-                          });
-                        },
-                      ),
-                      hintText: "Enter your Password",
-                      labelText: "Password",
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-                ),
-              ),
-            ),
+            kTextField("Enter your Phone Number", "Phone Number"),
             const SizedBox(
               height: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xff40573A) , width: 0.2),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2), // Shadow color
-                          blurRadius: 5, // Shadow blur effect
-                          offset: Offset(0, 4), // Shadow position
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  obscureText: _obscureText,
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText ? Icons.visibility : Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _obscureText = !_obscureText;
-                          });
-                        },
-                      ),
-                      hintText: "Confirm your Password",
-                      labelText: "Confirm Password",
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10.0)))),
-                ),
-              ),
+            _passwordField("Enter your password", "Password"),
+            const SizedBox(
+              height: 5,
             ),
-            SizedBox(
+            _passwordField("Confirm Password", "Confirm Password"),
+            const SizedBox(
               height: 20,
             ),
             Center(
@@ -197,7 +80,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                           horizontal: 50, vertical: 10),
                     ),
                     onPressed: () {
-                     Get.toNamed("/otpVerification");
+                      Get.toNamed("/otpVerification");
                     },
                     child: const Text(
                       "Register",
@@ -206,7 +89,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Center(
@@ -215,7 +98,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
               style: TextStyle(color: Colors.grey.shade400),
               textAlign: TextAlign.center,
             )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -223,7 +106,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                   "assets/image/google.png",
                   height: 40,
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Image.asset(
                   "assets/image/facebook.png",
                   height: 30,
@@ -232,5 +115,45 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
             ),
           ]),
         )));
+  }
+
+  Widget _passwordField(String hintText, String labelText) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: const Color(0xff40573A), width: 0.2),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2), // Shadow color
+              blurRadius: 5, // Shadow blur effect
+              offset: const Offset(0, 4), // Shadow position
+            ),
+          ],
+        ),
+        child: TextField(
+          obscureText: _obscureText,
+          decoration: InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                  color: Colors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              ),
+              hintText: hintText,
+              labelText: labelText,
+              border: const OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)))),
+        ),
+      ),
+    );
   }
 }

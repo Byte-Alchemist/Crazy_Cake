@@ -1,3 +1,4 @@
+import 'package:crazy_cake/widgets/kText_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,72 +56,46 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 15,
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Color(0xff40573A), width: 0.2),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2), // Shadow color
-                      blurRadius: 5, // Shadow blur effect
-                      offset: const Offset(0, 4), // Shadow position
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      hintText: "Enter your Email",
-                      labelText: "Email",
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xff40573A)),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.0)))),
-                ),
-              ),
-            ),
+      kTextField("Enter your Email", "Email"),
             const SizedBox(
               height: 5,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    border:
-                        Border.all(color: const Color(0xff40573A), width: 0.2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2), // Shadow color
-                        blurRadius: 5, // Shadow blur effect
-                        offset: const Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(10)),
-                child: TextField(
-                  obscureText: _obscureText,
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      filled: true,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                          color: Colors.grey,
-                        ),
-                        onPressed: _togglePasswordVisibility,
-                      ),
-                      hintText: "Enter your Password",
-                      labelText: "Password",
-                      border: const OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.0)))),
-                ),
-              ),
+       Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: const Color(0xff40573A), width: 0.2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2), // Shadow color
+            blurRadius: 5, // Shadow blur effect
+            offset: const Offset(0, 4), // Shadow position
+          ),
+        ],
+      ),
+      child: TextField(
+        obscureText: _obscureText,
+        decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
+          hintText: "Enter your Password",
+          labelText: "Password",
+          border: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xff40573A)),
+            borderRadius: BorderRadius.all(Radius.circular(10.0))
+          ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              _obscureText ? Icons.visibility : Icons.visibility_off,
+              color: Colors.black,
             ),
+            onPressed: _togglePasswordVisibility,
+          ),
+        ),
+      ),
+    ),
+  ),
             const SizedBox(
               height: 20,
             ),
@@ -146,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Center(
@@ -155,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(color: Colors.grey.shade400),
               textAlign: TextAlign.center,
             )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -163,14 +138,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   "assets/image/google.png",
                   height: 40,
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Image.asset(
                   "assets/image/facebook.png",
                   height: 30,
                 ),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -187,3 +162,6 @@ class _LoginScreenState extends State<LoginScreen> {
         )));
   }
 }
+//   hintText: "Enter your Email",  labelText: "Email"
+                      
+                    

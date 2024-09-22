@@ -27,15 +27,15 @@ class OnBoardContent extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 6),
+        const SizedBox(height: 6),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(
           text,
           style: TextStyle(

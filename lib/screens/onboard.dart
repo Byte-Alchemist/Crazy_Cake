@@ -39,7 +39,7 @@ class _OnboardPageState extends State<OnboardPage> {
       body: SafeArea(
         child: Column(
           children: [
-            Spacer(
+            const Spacer(
               flex: 2,
             ),
             SizedBox(
@@ -59,7 +59,7 @@ class _OnboardPageState extends State<OnboardPage> {
                         })
                   
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
@@ -68,20 +68,20 @@ class _OnboardPageState extends State<OnboardPage> {
                     child: AnimatedDot(isActive: index == _selectedIndex),
                   )),
             ),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                   shadowColor: Colors.grey.shade400,
-                  backgroundColor: Color(0xFFEC9E49),
+                  backgroundColor: const Color(0xFFEC9E49),
                 ),
                 onPressed: () {
                   Get.toNamed("/login");
                 },
-                child: Text("Get Started" , style: TextStyle(color: Colors.black45, fontWeight: FontWeight.w300),)),
-            Spacer(),
+                child: const Text("Get Started" , style: TextStyle(color: Colors.black45, fontWeight: FontWeight.w300),)),
+            const Spacer(),
           ],
         ),
       ),

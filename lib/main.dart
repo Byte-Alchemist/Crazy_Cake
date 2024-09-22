@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,11 +25,11 @@ class MyApp extends StatelessWidget {
    ),
    initialRoute: "/",
     getPages: [
-      GetPage(name: "/", page: () => OnboardPage()),
-      GetPage(name: "/login", page: () => LoginScreen()),
-      GetPage(name: "/home", page: () => HomeScreen()),
-      GetPage(name: "/register" , page: () => UserRegistrationScreen()),
-      GetPage(name: "/otpVerification", page: () => OtpVerficationPage())
+      GetPage(name: "/", page: () => const OnboardPage()),
+      GetPage(name: "/login", page: () => const LoginScreen()),
+      GetPage(name: "/home", page: () => const HomeScreen()),
+      GetPage(name: "/register" , page: () => const UserRegistrationScreen()),
+      GetPage(name: "/otpVerification", page: () => const OtpVerficationPage())
     ]
       );
   }
