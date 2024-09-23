@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpVerficationPage extends StatefulWidget {
@@ -63,6 +64,7 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     // Navigate to the next screen
+                    Get.toNamed("/home");
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
