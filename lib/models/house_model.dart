@@ -35,7 +35,7 @@ List<HouseRoom> houseList = [
     width: "18.5",
     type: "Family",
     rating: "4.5",
-    image: "assets/image/image22.jpg",
+    image: "assets/image/image22.jpeg",
     color: const Color(0xff7aafff)
   ),
   HouseRoom(
@@ -47,7 +47,7 @@ List<HouseRoom> houseList = [
     width: "18.5",
     type: "Family",
     rating: "4.5",
-    image: "assets/image/image9.jpg",
+    image: "assets/image/image9.jpeg",
       color: const Color(0xff63bed8)
   ),
   HouseRoom(
@@ -59,7 +59,7 @@ List<HouseRoom> houseList = [
     width: "20.0",
     type: "Family",
     rating: "4.0",
-    image: "assets/image/image3.jpg",
+    image: "assets/image/image3.jpeg",
      color: const Color(0xffad85e6)
   ),
   HouseRoom(
@@ -71,7 +71,7 @@ List<HouseRoom> houseList = [
     width: "15",
     type: "Single",
     rating: "5.0",
-    image: "assets/image/image4.jpg",
+    image: "assets/image/image4.jpeg",
      color: const Color(0xff44aeb2)
   ),
   HouseRoom(
@@ -83,7 +83,7 @@ List<HouseRoom> houseList = [
     width: "18",
     type: "Family",
     rating: "4.6",
-    image: "assets/image/image5.jpg",
+    image: "assets/image/image5.jpeg",
      color: const Color(0xffad85e6)
   ),
   HouseRoom(
@@ -95,7 +95,7 @@ List<HouseRoom> houseList = [
     width: "22.2",
     type: "Single",
     rating: "4.0",
-    image: "assets/image/image6.jpg",
+    image: "assets/image/image6.jpeg",
      color: const Color(0xff44aeb2)
   ),
   HouseRoom(
@@ -107,7 +107,7 @@ List<HouseRoom> houseList = [
     width: "15.5",
     type: "Family",
     rating: "4.0",
-    image: "assets/image/image7.jpg",
+    image: "assets/image/image7.jpeg",
      color: const Color(0xffad85e6)
   ),
   HouseRoom(
@@ -119,7 +119,7 @@ List<HouseRoom> houseList = [
     width: "14.5",
     type: "Single",
     rating: "5.0",
-    image: "assets/image/image8.jpg",
+    image: "assets/image/image8.jpeg",
         color: const Color(0xff7aafff)
   ),
   HouseRoom(
@@ -131,7 +131,7 @@ List<HouseRoom> houseList = [
     width: "18.5",
     type: "Family",
     rating: "4.5",
-    image: "assets/image/image2.jpg",
+    image: "assets/image/image2.jpeg",
          color: const Color(0xff63bed8)
   ),
   HouseRoom(
@@ -143,7 +143,7 @@ List<HouseRoom> houseList = [
     width: "18.5",
     type: "Family",
     rating: "4.5",
-    image: "assets/image/image11.jpg",
+    image: "assets/image/image11.jpeg",
         color: const Color(0xff7aafff)
 
   ),
@@ -156,7 +156,7 @@ List<HouseRoom> houseList = [
     width: "19.5",
     type: "Family",
     rating: "5.0",
-    image: "assets/image/image1.jpg",
+    image: "assets/image/image1.jpeg",
     color: const Color(0xff44aeb2)
   ),
 ];
