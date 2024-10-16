@@ -23,9 +23,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   List _pages = [
     HomeScreen(),
-    ProfileScreen(),
     CartScreen(),
     ChatScreen(),
+     ProfileScreen(),
   ];
 
   @override

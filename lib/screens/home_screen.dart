@@ -251,7 +251,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             borderRadius: BorderRadius.circular(20)),
                         child: ListTile(
                           title: Text(houselist[index].name),
-                          trailing: Image.asset(houselist[index].image),
+                          trailing: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(houselist[index].image)),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
