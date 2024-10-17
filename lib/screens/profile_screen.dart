@@ -1,3 +1,4 @@
+import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/screens/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -72,7 +73,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     kElevatedButton('Orders', Icons.carpenter, () {}),
                     kElevatedButton('About Us', Icons.subscript, () {}),
                     kElevatedButton('Privacy Policy', Icons.privacy_tip, () {}),
-                    kElevatedButton('Logout', Icons.logout, () {}),
+                    kElevatedButton('Logout', Icons.logout, () {
+                      ApiPref().removeUserToken();
+                      _showLogoutConfirmationDialog(context);
+                    }),
                   ],
                 ),
               ),
@@ -107,6 +111,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Text(text),
         ],
       ),
+    );
+  }
+
+    void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirm Logout'),
+          content: Text('Are you sure you want to log out?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Close the dialog without any action
+                Navigator.of(context).pop();
+              },
+              child: Text('No'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Handle the logout action
+                Navigator.of(context).pop(); // Close the dialog
+                Get.snackbar('Logged out', 'You have been logged out');
+                Get.offAllNamed('/login');
+                // Perform your logout functionality here
+              },
+              child: Text('Yes'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/widgets/animated_dot.dart';
 import 'package:crazy_cake/widgets/onboard_content.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,10 @@ class _OnboardPageState extends State<OnboardPage> {
     }
   ];
 
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +80,7 @@ class _OnboardPageState extends State<OnboardPage> {
                   shadowColor: Colors.grey.shade400,
                   backgroundColor: const Color(0xFFEC9E49),
                 ),
-                onPressed: () {
+                onPressed: () async {
                   Get.toNamed("/login");
                 },
                 child: const Text("Get Started" , style: TextStyle(color: Colors.black45, fontWeight: FontWeight.w300),)),

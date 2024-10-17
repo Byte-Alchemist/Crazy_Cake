@@ -1,3 +1,5 @@
+import 'package:crazy_cake/controller/auth_controller.dart';
+import 'package:crazy_cake/models/login_model.dart';
 import 'package:crazy_cake/screens/user_registration.dart';
 import 'package:crazy_cake/widgets/kText_field.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthController authController = Get.put(AuthController());
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool _obscureText = true;
 
   void _togglePasswordVisibility() {
@@ -61,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 15,
               ),
-              kTextField("Enter your Email", "Email"),
+              kTextField("Enter your Email", "Email", emailController),
               const SizedBox(
                 height: 5,
               ),
@@ -81,6 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   child: TextField(
+                    controller: passwordController,
                     obscureText: _obscureText,
                     decoration: InputDecoration(
                       fillColor: Colors.white,
@@ -120,7 +126,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             horizontal: 50, vertical: 10),
                       ),
                       onPressed: () {
-                        Get.toNamed("/home");
+                        final LoginModel loginModel = LoginModel(
+                            email: emailController.text,
+                            password: passwordController.text);
+                        authController.UserLogin(loginModel);
                       },
                       child: const Text(
                         "Login",
@@ -171,6 +180,3 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 }
-
-                      
-                    

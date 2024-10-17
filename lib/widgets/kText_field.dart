@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget kTextField(String hintText, String labelText) {
+Widget kTextField(String hintText, String labelText , TextEditingController? controller) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -16,6 +16,7 @@ Widget kTextField(String hintText, String labelText) {
         ],
       ),
       child: TextField(
+        controller: controller,
         decoration: InputDecoration(
             fillColor: Colors.white,
             filled: true,

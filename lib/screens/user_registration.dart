@@ -54,11 +54,11 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                kTextField("Enter your Email", "Email"),
+                kTextField("Enter your Email", "Email" , null),
                 const SizedBox(
                   height: 5,
                 ),
-                kTextField("Enter your Phone Number", "Phone Number"),
+                kTextField("Enter your Phone Number", "Phone Number" , null),
                 const SizedBox(
                   height: 5,
                 ),
