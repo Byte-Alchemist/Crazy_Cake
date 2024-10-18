@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class profile_details extends StatelessWidget {
+class ProfileDetails extends StatelessWidget {
+  const ProfileDetails({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,12 +12,12 @@ class profile_details extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            // Back button action (can use Get.back() with GetX)
+            Get.back();
           },
         ),
-        title: Text(
+        title: const Text(
           "Profile Information",
           style: TextStyle(color: Colors.black),
         ),
@@ -24,7 +27,7 @@ class profile_details extends StatelessWidget {
             onPressed: () {
               // Done button action
             },
-            child: Text(
+            child: const Text(
               "Done",
               style: TextStyle(color: Colors.orange),
             ),
@@ -39,7 +42,7 @@ class profile_details extends StatelessWidget {
             Stack(
               alignment: Alignment.bottomRight,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 50,
                   backgroundImage: NetworkImage(
                     "https://via.placeholder.com/150", // Replace with real image URL
@@ -49,7 +52,7 @@ class profile_details extends StatelessWidget {
                   backgroundColor: Colors.orange,
                   radius: 18,
                   child: IconButton(
-                    icon: Icon(Icons.camera_alt, color: Colors.white, size: 18),
+                    icon: const Icon(Icons.camera_alt, color: Colors.white, size: 18),
                     onPressed: () {
                       // Camera button action
                     },
@@ -57,11 +60,11 @@ class profile_details extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Profile Info Card
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -98,12 +101,12 @@ class profile_details extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(color: Colors.grey, fontSize: 14),
+            style: const TextStyle(color: Colors.grey, fontSize: 14),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Text(
             value,
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
           Divider(thickness: 1, color: Colors.grey[200]),
         ],

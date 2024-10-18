@@ -1,5 +1,5 @@
 import 'package:crazy_cake/controller/token_controller.dart';
-import 'package:crazy_cake/screens/edit_profile.dart';
+import 'package:crazy_cake/screens/profile_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               )),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Expanded(
@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     kElevatedButton(' Profile', Icons.person, () {
-                      Get.to(profile_details());
+                      Get.to(() => ProfileDetails());
                     }),
                     kElevatedButton('Favourites', Icons.heat_pump_sharp, () {}),
                     kElevatedButton('Orders', Icons.carpenter, () {}),
@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(05),
-          side: BorderSide(color: Colors.black),
+          side: const BorderSide(color: Colors.black),
         ),
         elevation: 0,
       ),
@@ -105,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon,
             color: Colors.black,
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Text(text),
@@ -114,20 +114,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-    void _showLogoutConfirmationDialog(BuildContext context) {
+  void _showLogoutConfirmationDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Logout'),
-          content: Text('Are you sure you want to log out?'),
+          title: const Text('Confirm Logout'),
+          content: const Text('Are you sure you want to log out?'),
           actions: [
             TextButton(
               onPressed: () {
                 // Close the dialog without any action
                 Navigator.of(context).pop();
               },
-              child: Text('No'),
+              child: const Text('No'),
             ),
             TextButton(
               onPressed: () {
@@ -137,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Get.offAllNamed('/login');
                 // Perform your logout functionality here
               },
-              child: Text('Yes'),
+              child: const Text('Yes'),
             ),
           ],
         );

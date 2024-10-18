@@ -1,4 +1,3 @@
-import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/widgets/animated_dot.dart';
 import 'package:crazy_cake/widgets/onboard_content.dart';
 import 'package:flutter/material.dart';

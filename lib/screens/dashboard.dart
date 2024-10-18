@@ -21,11 +21,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
    });
   }
 
-  List _pages = [
-    HomeScreen(),
-    CartScreen(),
-    ChatScreen(),
-     ProfileScreen(),
+  final List _pages = [
+    const HomeScreen(),
+    const CartScreen(),
+    const ChatScreen(),
+     const ProfileScreen(),
   ];
 
   @override
@@ -35,9 +35,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: _pages[pageIndex],
       bottomNavigationBar: Container(
       height: 60,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
         ),

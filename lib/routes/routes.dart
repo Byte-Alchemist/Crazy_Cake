@@ -2,7 +2,7 @@ import 'package:crazy_cake/screens/Otp_verfication.dart';
 import 'package:crazy_cake/screens/dashboard.dart';
 import 'package:crazy_cake/screens/login_screen.dart';
 import 'package:crazy_cake/screens/onboard.dart';
-import 'package:crazy_cake/screens/edit_profile.dart';
+import 'package:crazy_cake/screens/profile_details.dart';
 import 'package:crazy_cake/screens/profile_screen.dart';
 import 'package:crazy_cake/screens/user_registration.dart';
 import 'package:get/get.dart';
@@ -42,7 +42,7 @@ class AppRoutes {
         transitionDuration: const Duration(seconds: 3)),
     GetPage(
         name: "/editProfile",
-        page: () => profile_details(),
+        page: () => ProfileDetails(),
         transition: Transition.downToUp,
         transitionDuration: const Duration(seconds: 3)),
   ];
