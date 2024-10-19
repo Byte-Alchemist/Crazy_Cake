@@ -10,9 +10,9 @@ class UserLoginModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['phone_number'] = this.phoneNumber;
-    data['password'] = this.password;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['phone_number'] = phoneNumber;
+    data['password'] = password;
     return data;
   }
 }

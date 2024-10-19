@@ -180,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 
                           },
                           child: Obx(
-                            ()=> _authController.isLoading.value? CircularProgressIndicator() : const Text(
+                            ()=> _authController.isLoading.value? const CircularProgressIndicator() : const Text(
                               "Login",
                               style: TextStyle(
                                   color: Colors.white, fontWeight: FontWeight.w300),

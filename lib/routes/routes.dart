@@ -42,7 +42,7 @@ class AppRoutes {
         transitionDuration: const Duration(seconds: 3)),
     GetPage(
         name: "/editProfile",
-        page: () => ProfileDetails(),
+        page: () => const ProfileDetails(),
         transition: Transition.downToUp,
         transitionDuration: const Duration(seconds: 3)),
   ];

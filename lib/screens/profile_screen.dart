@@ -67,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     kElevatedButton(' Profile', Icons.person, () {
-                      Get.to(() => ProfileDetails());
+                      Get.to(() => const ProfileDetails());
                     }),
                     kElevatedButton('Favourites', Icons.heat_pump_sharp, () {}),
                     kElevatedButton('Orders', Icons.carpenter, () {}),

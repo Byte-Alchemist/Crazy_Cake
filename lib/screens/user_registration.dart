@@ -20,6 +20,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
 
+  @override
   void dispose() {
     super.dispose();
     _passwordController.dispose();
@@ -264,7 +265,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                           width: 320,
                           child: Obx(
                             () => _authController.isLoading.value
-                                ? CircularProgressIndicator()
+                                ? const CircularProgressIndicator()
                                 : ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(

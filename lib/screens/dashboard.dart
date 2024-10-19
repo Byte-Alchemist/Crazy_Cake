@@ -3,7 +3,6 @@ import 'package:crazy_cake/screens/chat_screen.dart';
 import 'package:crazy_cake/screens/home_screen.dart';
 import 'package:crazy_cake/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
