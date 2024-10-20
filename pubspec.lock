@@ -120,6 +120,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  internet_connection_checker:
+    dependency: "direct main"
+    description:
+      name: internet_connection_checker
+      sha256: "1c683e63e89c9ac66a40748b1b20889fd9804980da732bf2b58d6d5456c8e876"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
   leak_tracker:
     dependency: transitive
     description:
@@ -152,6 +160,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  loading_indicator:
+    dependency: "direct main"
+    description:
+      name: loading_indicator
+      sha256: a101ffb2aa3e646137d7810bfa90b50525dd3f72c01235b6df7491cf6af6f284
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.1"
   matcher:
     dependency: transitive
     description:

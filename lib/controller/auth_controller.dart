@@ -1,16 +1,14 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/models/user_login_model.dart';
 import 'package:crazy_cake/models/user_registraion_model.dart';
-import 'package:flutter/foundation.dart';
+import 'package:crazy_cake/screens/auth/Otp_verfication.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class AuthController extends GetxController {
-  static const String baseURL = 'http://65.1.136.101';
+  static const String baseURL = 'http://13.126.26.55';
 
   RxBool isLoading = false.obs;
 
@@ -24,14 +22,17 @@ class AuthController extends GetxController {
             'accept': 'application/json',
           },
           body: jsonEncode(userRegisterModel.toJson()));
+          
+      var responseData = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        Get.snackbar(
-            backgroundColor: Colors.green,
+        var responseData = jsonDecode(response.body);        Get.snackbar(
+            backgroundColor: Colors.blue,
             'Success',
-            'User Registered Successfully');
-        Get.toNamed('/login');
+            'A OTP has been sent to your phone number');
+        Get.to(()=> OtpVerficationPage(phoneNumber: userRegisterModel.phoneNumber.toString()));
+        
       } else {
-        Get.snackbar('Error', response.body);
+        Get.snackbar('Error', responseData["detail"]);
       }
     } catch (e) {
       Get.snackbar(

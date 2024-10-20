@@ -14,7 +14,7 @@ class ProfileDetails extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Get.back();
+            Get.toNamed('/home');
           },
         ),
         title: const Text(
@@ -42,12 +42,7 @@ class ProfileDetails extends StatelessWidget {
             Stack(
               alignment: Alignment.bottomRight,
               children: [
-                const CircleAvatar(
-                  radius: 50,
-                  backgroundImage: NetworkImage(
-                    "https://via.placeholder.com/150", // Replace with real image URL
-                  ),
-                ),
+                
                 CircleAvatar(
                   backgroundColor: Colors.orange,
                   radius: 18,

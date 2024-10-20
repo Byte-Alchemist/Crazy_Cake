@@ -1,6 +1,6 @@
 import 'package:crazy_cake/controller/auth_controller.dart';
 import 'package:crazy_cake/models/user_registraion_model.dart';
-import 'package:crazy_cake/widgets/kText_field.dart';
+import 'package:crazy_cake/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -224,11 +224,11 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                           ),
                           child: TextFormField(
                             validator: (value) {
-                              if (value!.isEmpty) {
-                                if (value != _passwordController.text) {
-                                  return "Password does not match";
-                                }
+                              if (value == null || value.isEmpty) {
                                 return "Please enter your Confirm Password";
+                              }
+                              if (value != _passwordController.text) {
+                                return "Passwords do not match";
                               }
                               return null;
                             },
@@ -263,10 +263,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                       Center(
                         child: SizedBox(
                           width: 320,
-                          child: Obx(
-                            () => _authController.isLoading.value
-                                ? const CircularProgressIndicator()
-                                : ElevatedButton(
+                          child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(05),
@@ -288,13 +285,15 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                                             userRegistraionModel);
                                       }
                                     },
-                                    child: const Text(
-                                      "Register",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w300),
+                                    child: Obx(
+                                      ()=> _authController.isLoading.value? KloadindIndicator() : const Text(
+                                        "Register",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w300),
+                                      ),
                                     )),
-                          ),
+                          
                         ),
                       ),
                       const SizedBox(

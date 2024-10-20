@@ -1,15 +1,21 @@
+import 'package:crazy_cake/controller/otp_controller.dart';
+import 'package:crazy_cake/models/otpverification_model.dart';
+import 'package:crazy_cake/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
 class OtpVerficationPage extends StatefulWidget {
-  const OtpVerficationPage({super.key});
+  final String? phoneNumber;
+  const OtpVerficationPage({super.key, this.phoneNumber});
 
   @override
   State<OtpVerficationPage> createState() => _OtpVerficationPageState();
 }
 
 class _OtpVerficationPageState extends State<OtpVerficationPage> {
+  final otpController = Get.put(OtpController());
+  String? otp;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +53,22 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                "Enter the OTP sent to +91 1234567890",
+              Text(
+                "Enter the OTP sent to ${widget.phoneNumber}",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15, color: Color(0xff5C1919)),
+                style: const TextStyle(fontSize: 15, color: Color(0xff5C1919)),
               ),
               const SizedBox(
                 height: 20,
               ),
-              const Pinput(),
+              Pinput(
+                
+                onCompleted: (value) {
+                setState(() {
+                  otp = value;
+                });
+
+              }),
               const SizedBox(
                 height: 20,
               ),
@@ -63,8 +76,12 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
+                    
+                    print(otp);
                     // Navigate to the next screen
-                    Get.toNamed("/home");
+                    final otpVerificationModel = OTPVerificationModel(
+                        phoneNumber: widget.phoneNumber.toString(), otp: otp);
+                    otpController.verifyOTP(otpVerificationModel);
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -74,11 +91,13 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 10),
                   ),
-                  child: const Text(
-                    "Verify",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
+                  child:  Obx(
+                    ()=> otpController.isLoading.value? KloadindIndicator() : const Text(
+                      "Verify",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),

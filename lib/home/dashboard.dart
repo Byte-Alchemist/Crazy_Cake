@@ -1,7 +1,7 @@
-import 'package:crazy_cake/screens/cart_screen.dart';
-import 'package:crazy_cake/screens/chat_screen.dart';
-import 'package:crazy_cake/screens/home_screen.dart';
-import 'package:crazy_cake/screens/profile_screen.dart';
+import 'package:crazy_cake/screens/checkout/cart_screen.dart';
+import 'package:crazy_cake/chat/chat_screen.dart';
+import 'package:crazy_cake/screens/splash/home_screen.dart';
+import 'package:crazy_cake/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {

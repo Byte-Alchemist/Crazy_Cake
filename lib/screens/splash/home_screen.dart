@@ -286,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Icons.square_foot,
                                       color: Colors.yellow,
                                     ),
-                                    Text(houselist[index].width),
+                                    Expanded(child: Text(houselist[index].width)),
                                   ],
                                 ),
                                 Row(

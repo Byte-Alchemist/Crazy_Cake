@@ -1,5 +1,5 @@
 import 'package:crazy_cake/controller/token_controller.dart';
-import 'package:crazy_cake/screens/profile_details.dart';
+import 'package:crazy_cake/screens/profile/profile_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/image/black.jpg'),
+                  image: AssetImage('assets/image/cake.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -74,7 +74,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     kElevatedButton('About Us', Icons.subscript, () {}),
                     kElevatedButton('Privacy Policy', Icons.privacy_tip, () {}),
                     kElevatedButton('Logout', Icons.logout, () {
-                      ApiPref().removeUserToken();
                       _showLogoutConfirmationDialog(context);
                     }),
                   ],
@@ -133,7 +132,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {
                 // Handle the logout action
                 Navigator.of(context).pop(); // Close the dialog
-                Get.snackbar('Logged out', 'You have been logged out');
+                Get.snackbar(
+                  backgroundColor: Colors.green,
+                  'Logged out', 'You have been logged out');
                 Get.offAllNamed('/login');
                 // Perform your logout functionality here
               },
