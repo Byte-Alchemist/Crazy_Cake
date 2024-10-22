@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/models/user_login_model.dart';
 import 'package:crazy_cake/models/user_registraion_model.dart';
@@ -22,15 +23,16 @@ class AuthController extends GetxController {
             'accept': 'application/json',
           },
           body: jsonEncode(userRegisterModel.toJson()));
-          
+
       var responseData = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var responseData = jsonDecode(response.body);        Get.snackbar(
+        var responseData = jsonDecode(response.body);
+        Get.snackbar(
             backgroundColor: Colors.blue,
             'Success',
             'A OTP has been sent to your phone number');
-        Get.to(()=> OtpVerficationPage(phoneNumber: userRegisterModel.phoneNumber.toString()));
-        
+        Get.to(() => OtpVerficationPage(
+            phoneNumber: userRegisterModel.phoneNumber.toString()));
       } else {
         Get.snackbar('Error', responseData["detail"]);
       }
@@ -57,14 +59,11 @@ class AuthController extends GetxController {
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseData = jsonDecode(response.body);
         var token = responseData['token']["access_token"];
-          ApiPref().setUserToken(token);
-          Get.snackbar(
-              backgroundColor: Colors.green,
-              'Success',
-              'Logged in Successfully');
-          Get.toNamed('/home'); 
-      }
-        else {
+        ApiPref().setUserToken(token);
+        Get.snackbar(
+            backgroundColor: Colors.green, 'Success', 'Logged in Successfully');
+        Get.toNamed('/home');
+      } else {
         Get.snackbar(backgroundColor: Colors.red, 'Error', 'Cannot Login');
       }
     } catch (e) {

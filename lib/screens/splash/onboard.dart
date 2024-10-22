@@ -82,7 +82,7 @@ class _OnboardPageState extends State<OnboardPage> {
                 onPressed: () async {
                   Get.toNamed("/login");
                 },
-                child: const Text("Get Started" , style: TextStyle(color: Colors.black45, fontWeight: FontWeight.w300),)),
+                child: const Text("Get Started" , style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300),)),
             const Spacer(),
           ],
         ),

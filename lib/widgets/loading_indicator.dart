@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
 KloadindIndicator() {
-  return SizedBox(
+  return const SizedBox(
     height: 30,
     width: 50,
     child: LoadingIndicator(
         indicatorType: Indicator.ballPulse,
     
         /// Required, The loading type of the widget
-        colors: const [Colors.white],
+        colors: [Colors.white],
     
         /// Optional, The color collections
         strokeWidth: 2,

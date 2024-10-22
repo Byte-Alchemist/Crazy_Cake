@@ -13,19 +13,19 @@ class AppRoutes {
         name: "/",
         page: () => const OnboardPage(),
         transition: Transition.zoom,
-        transitionDuration: const Duration(milliseconds: 500)),
+        transitionDuration: const Duration(milliseconds: 200)),
        
     GetPage(
         name: "/login",
         page: () => const LoginScreen(),
         transition: Transition.rightToLeftWithFade,
-        transitionDuration: const Duration(milliseconds: 500)),
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(name: "/home", page: () => const DashboardScreen()),
     GetPage(
         name: "/register",
         page: () => const UserRegistrationScreen(),
         transition: Transition.rightToLeftWithFade,
-        transitionDuration: const Duration(milliseconds: 500)),
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: "/otpVerification",
         page: () => const OtpVerficationPage(),
