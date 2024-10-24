@@ -1,5 +1,5 @@
 import 'package:crazy_cake/screens/checkout/cart_screen.dart';
-import 'package:crazy_cake/chat/chat_screen.dart';
+import 'package:crazy_cake/screens/chat/chat_screen.dart';
 import 'package:crazy_cake/screens/splash/home_screen.dart';
 import 'package:crazy_cake/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';

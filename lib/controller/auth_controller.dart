@@ -4,6 +4,7 @@ import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/models/user_login_model.dart';
 import 'package:crazy_cake/models/user_registraion_model.dart';
 import 'package:crazy_cake/screens/auth/Otp_verfication.dart';
+import 'package:crazy_cake/widgets/snackbar_moading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -15,6 +16,7 @@ class AuthController extends GetxController {
 
   Future<void> UserRegister(UserRegistraionModel userRegisterModel) async {
     try {
+      LoadingController().showLoading();
       isLoading(true);
       var url = Uri.parse('$baseURL/auth/v1/register');
       var response = await http.post(url,
@@ -27,6 +29,7 @@ class AuthController extends GetxController {
       var responseData = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         var responseData = jsonDecode(response.body);
+        LoadingController().hideLoading();
         Get.snackbar(
             backgroundColor: Colors.blue,
             'Success',
@@ -48,6 +51,7 @@ class AuthController extends GetxController {
 
   Future<void> UserLogin(UserLoginModel userLoginModel) async {
     try {
+      LoadingController().showLoading();
       isLoading(true);
       var url = Uri.parse('$baseURL/auth/v1/login');
       var response = await http.post(url,
@@ -60,6 +64,7 @@ class AuthController extends GetxController {
         var responseData = jsonDecode(response.body);
         var token = responseData['token']["access_token"];
         ApiPref().setUserToken(token);
+        LoadingController().hideLoading();
         Get.snackbar(
             backgroundColor: Colors.green, 'Success', 'Logged in Successfully');
         Get.toNamed('/home');

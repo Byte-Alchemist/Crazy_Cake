@@ -5,6 +5,7 @@ import 'package:crazy_cake/screens/splash/onboard.dart';
 import 'package:crazy_cake/screens/profile/profile_details.dart';
 import 'package:crazy_cake/screens/profile/profile_screen.dart';
 import 'package:crazy_cake/screens/auth/user_registration.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -13,19 +14,24 @@ class AppRoutes {
         name: "/",
         page: () => const OnboardPage(),
         transition: Transition.zoom,
-        transitionDuration: const Duration(milliseconds: 200)),
-       
+        transitionDuration: const Duration(milliseconds: 600)),
     GetPage(
         name: "/login",
         page: () => const LoginScreen(),
+        curve: Curves.bounceIn,
         transition: Transition.rightToLeftWithFade,
-        transitionDuration: const Duration(milliseconds: 200)),
-    GetPage(name: "/home", page: () => const DashboardScreen()),
+        transitionDuration: const Duration(milliseconds: 600)),
+    GetPage(
+        name: "/home",
+        page: () => const DashboardScreen(),
+        transition: Transition.downToUp,
+        transitionDuration: const Duration(seconds: 1)),
     GetPage(
         name: "/register",
         page: () => const UserRegistrationScreen(),
+        curve: Curves.easeIn,
         transition: Transition.rightToLeftWithFade,
-        transitionDuration: const Duration(milliseconds: 200)),
+        transitionDuration: const Duration(milliseconds: 600)),
     GetPage(
         name: "/otpVerification",
         page: () => const OtpVerficationPage(),

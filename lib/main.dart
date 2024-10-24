@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "jost"),
         initialRoute: "/",
-        getPages: AppRoutes.routes);
+        getPages: AppRoutes.routes,
+        defaultTransition: Transition.rightToLeftWithFade,);
   }
 }
