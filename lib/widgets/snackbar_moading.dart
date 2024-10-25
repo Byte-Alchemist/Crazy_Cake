@@ -12,14 +12,14 @@ class LoadingController extends GetxController {
       snackPosition: SnackPosition.TOP,
       margin: EdgeInsets.zero,
       padding: EdgeInsets.zero,
-      duration: Duration(minutes: 10), // Keep it for a long time
+      duration: const Duration(minutes: 10), // Keep it for a long time
       isDismissible: false,
       overlayColor: Colors.black54,// Hide main button
       messageText:Container(
   width: double.infinity,
- height: 806,
+ height: Get.size.height,
   color: Colors.black54,
-  child: Center(
+  child: const Center(
     child: CircularProgressIndicator(
       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
     ),

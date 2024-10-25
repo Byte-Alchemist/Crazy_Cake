@@ -37,7 +37,22 @@ class NetworkController extends GetxController {
       );
     } else {
       if (Get.isSnackbarOpen) {
-        Get.closeCurrentSnackbar();
+          Get.rawSnackbar(
+        messageText: const Text(
+          'INTERNET CONNECTED',
+          style: TextStyle(color: Colors.white, fontSize: 14),
+        ),
+        isDismissible: false,
+        duration: const Duration(seconds: 1),
+        backgroundColor: Colors.green,
+        icon: const Icon(
+          Icons.wifi,
+          color: Colors.white,
+          size: 35,
+        ),
+        margin: EdgeInsets.zero,
+        snackStyle: SnackStyle.GROUNDED,
+      );
       }
     }
   }

@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(primarySwatch: Colors.blue, fontFamily: "jost"),
-        initialRoute: "/",
+        initialRoute: "/splash",
         getPages: AppRoutes.routes,
-        defaultTransition: Transition.rightToLeftWithFade,);
+        defaultTransition: Transition.fadeIn,);
   }
 }

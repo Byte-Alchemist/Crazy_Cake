@@ -1,3 +1,4 @@
+import 'package:crazy_cake/controller/token_controller.dart';
 import 'package:crazy_cake/screens/profile/profile_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -113,35 +114,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _showLogoutConfirmationDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirm Logout'),
-          content: const Text('Are you sure you want to log out?'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                // Close the dialog without any action
-                Navigator.of(context).pop();
-              },
-              child: const Text('No'),
+    Get.dialog(
+      transitionCurve: Curves.easeInOut,
+      transitionDuration: const Duration(milliseconds: 500),
+        barrierDismissible: false,
+        Dialog(
+          backgroundColor: Colors.white,
+          child: Container(
+            height: 250,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.question_mark,
+                  size: 100,
+                  color: Colors.blue,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Are you sure you want to logout?',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: const Text(
+                        'No',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                      ),
+                      onPressed: () {
+                        Get.back();
+                        ApiPref().removeUserToken();
+                        Get.offAllNamed('/login');
+                      },
+                      child: const Text(
+                        'Yes',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                // Handle the logout action
-                Navigator.of(context).pop(); // Close the dialog
-                Get.snackbar(
-                  backgroundColor: Colors.green,
-                  'Logged out', 'You have been logged out');
-                Get.offAllNamed('/login');
-                // Perform your logout functionality here
-              },
-              child: const Text('Yes'),
-            ),
-          ],
-        );
-      },
-    );
+          ),
+        ));
   }
 }

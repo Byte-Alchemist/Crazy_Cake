@@ -6,7 +6,7 @@ import 'dart:convert';
 
 class OtpController extends GetxController {
   var isLoading = false.obs;
-  final String baseURL = "http://13.126.26.55";
+  final String baseURL = "http://13.233.15.222/";
 
   Future<void> verifyOTP(OTPVerificationModel otpVerificationModel) async {
     isLoading(true);
@@ -23,16 +23,18 @@ class OtpController extends GetxController {
       final responseData = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
         Get.snackbar(
+          
           backgroundColor: Colors.green,
           'Success', 'OTP Verified Successfully');
-        Get.toNamed('/home');
+        Get.offAllNamed('/home');
       } else if (response.statusCode == 404) {
         Get.snackbar(
           backgroundColor: Colors.red,
+          colorText: Colors.white,
           "Verification failed" , "Invalid OTP");
       }
     } catch (e) {
-      Get.snackbar('Error', 'Something went wrong, please try again');
+      Get.snackbar('Error', 'Something went wrong, please try again' , colorText: Colors.white);
     } finally {
       isLoading(false);
     }
