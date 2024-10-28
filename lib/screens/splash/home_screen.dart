@@ -1,6 +1,8 @@
 import 'dart:async'; // Import for Timer
 import 'package:crazy_cake/models/house_model.dart';
+import 'package:crazy_cake/screens/product/product_details.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -207,7 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             _onPageChanged, // Call _onPageChanged when swiped
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
@@ -220,7 +223,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-                    const SizedBox(height: 16), // Space between PageView and dots
+                    const SizedBox(
+                        height: 16), // Space between PageView and dots
                     _buildDotIndicator(),
                     const SizedBox(height: 15),
                     // Custom dot indicator
@@ -254,10 +258,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.circular(20)),
                           child: ListTile(
+                            onTap: () {
+                              Get.to(() => ProductDetails());
+                            },
                             title: Text(houselist[index].name),
                             trailing: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.asset(houselist[index].image)),
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(houselist[index].image)),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -286,7 +293,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Icons.square_foot,
                                       color: Colors.yellow,
                                     ),
-                                    Expanded(child: Text(houselist[index].width)),
+                                    Expanded(
+                                        child: Text(houselist[index].width)),
                                   ],
                                 ),
                                 Row(
@@ -299,8 +307,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               BorderRadius.circular(10)),
                                       child: Text(
                                         houselist[index].type,
-                                        style:
-                                            const TextStyle(color: Colors.white),
+                                        style: const TextStyle(
+                                            color: Colors.white),
                                       ),
                                     ),
                                     const SizedBox(width: 10),

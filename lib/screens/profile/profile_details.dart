@@ -1,110 +1,173 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class ProfileDetails extends StatelessWidget {
+class ProfileDetails extends StatefulWidget {
   const ProfileDetails({super.key});
 
+  @override
+  State<ProfileDetails> createState() => _ProfileDetailsState();
+}
+
+class _ProfileDetailsState extends State<ProfileDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Get.toNamed('/home');
-          },
-        ),
         title: const Text(
-          "Profile Information",
-          style: TextStyle(color: Colors.black),
+          'Profile',
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        centerTitle: true,
-        actions: [
-          TextButton(
-            onPressed: () {
-              // Done button action
-            },
-            child: const Text(
-              "Done",
-              style: TextStyle(color: Colors.orange),
-            ),
-          ),
-        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(5),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Profile Picture with Camera Icon
-            Stack(
-              alignment: Alignment.bottomRight,
-              children: [
-                
-                CircleAvatar(
-                  backgroundColor: Colors.orange,
-                  radius: 18,
-                  child: IconButton(
-                    icon: const Icon(Icons.camera_alt, color: Colors.white, size: 18),
-                    onPressed: () {
-                      // Camera button action
-                    },
-                  ),
+            const Card(
+              color: Colors.white,
+              shadowColor: Colors.black,
+              margin: EdgeInsets.all(10),
+              child: ListTile(
+                title: Text(
+                  "Name",
+                  style: TextStyle(fontSize: 15),
                 ),
-              ],
+                subtitle: Text(
+                  "John Doe",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                trailing: Icon(Icons.edit),
+              ),
+            ),
+            Card(
+              color: Colors.white,
+              shadowColor: Colors.black,
+              margin: const EdgeInsets.all(10),
+              child: ListTile(
+                title: const Text(
+                  "Email",
+                  style: TextStyle(fontSize: 15),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "abit43939@gmail.com",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      padding: const EdgeInsets.all(5),
+                      child: const Text(
+                        "Verified",
+                        style: TextStyle(fontSize: 10, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                trailing: const Icon(Icons.edit),
+              ),
+            ),
+            const Card(
+              color: Colors.white,
+              shadowColor: Colors.black,
+              margin: EdgeInsets.all(10),
+              child: ListTile(
+                title: Text(
+                  "Password",
+                  style: TextStyle(fontSize: 15),
+                ),
+                subtitle: Text(
+                  "********",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                trailing: Icon(Icons.edit),
+              ),
+            ),
+            Card(
+              color: Colors.white,
+              shadowColor: Colors.black,
+              margin: const EdgeInsets.all(10),
+              child: ListTile(
+                title: const Text(
+                  "Mobile Number",
+                  style: TextStyle(fontSize: 15),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "+91 9876543210",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      padding: const EdgeInsets.all(5),
+                      child: const Text(
+                        "Verified",
+                        style: TextStyle(fontSize: 10, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                trailing: const Icon(Icons.edit),
+              ),
             ),
             const SizedBox(height: 20),
-
-            // Profile Info Card
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    blurRadius: 10,
-                    spreadRadius: 5,
-                  ),
-                ],
+            const Padding(
+              padding: EdgeInsets.only(left: 20),
+              child: Text(
+                "Connected Accounts",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              child: Column(
-                children: [
-                  _buildProfileField("Username", "Cameron Cook"),
-                  _buildProfileField("Email", "darrell_bailey@gmail.com"),
-                  _buildProfileField("Phone", "+65 39879 343"),
-                  _buildProfileField("Gender", "Female"),
-                  _buildProfileField("Date of birth", "16/04/1988"),
-                ],
+            ),
+            const SizedBox(height: 10),
+            Card(
+              color: Colors.white,
+              shadowColor: Colors.black,
+              margin: const EdgeInsets.all(10),
+              child: ListTile(
+                title: const Text(
+                  "Facebook",
+                  style: TextStyle(fontSize: 15),
+                ),
+                trailing: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Connect",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                leading: const Icon(Icons.facebook),
+              ),
+            ),
+            const Card(
+              color: Colors.white,
+              shadowColor: Colors.black,
+              margin: EdgeInsets.all(10),
+              child: ListTile(
+                title: Text(
+                  "Google",
+                  style: TextStyle(fontSize: 15),
+                ),
+                trailing: Text(
+                    "Connected",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold , color: Colors.green),
+                  ),
+                leading: Icon(Icons.g_translate),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // Helper method to build a profile field with label and value
-  Widget _buildProfileField(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(color: Colors.grey, fontSize: 14),
-          ),
-          const SizedBox(height: 5),
-          Text(
-            value,
-            style: const TextStyle(fontSize: 16),
-          ),
-          Divider(thickness: 1, color: Colors.grey[200]),
-        ],
       ),
     );
   }

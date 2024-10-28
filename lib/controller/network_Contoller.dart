@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 class NetworkController extends GetxController {
   final Connectivity _connectivity = Connectivity();
-
   @override
   void onInit() {
     super.onInit();
@@ -17,7 +16,6 @@ class NetworkController extends GetxController {
         ? connectivityResults
             .first // Get the first result if the list is not empty
         : ConnectivityResult.none;
-
     if (connectivityResult == ConnectivityResult.none) {
       Get.rawSnackbar(
         messageText: const Text(
@@ -37,22 +35,7 @@ class NetworkController extends GetxController {
       );
     } else {
       if (Get.isSnackbarOpen) {
-          Get.rawSnackbar(
-        messageText: const Text(
-          'INTERNET CONNECTED',
-          style: TextStyle(color: Colors.white, fontSize: 14),
-        ),
-        isDismissible: false,
-        duration: const Duration(seconds: 1),
-        backgroundColor: Colors.green,
-        icon: const Icon(
-          Icons.wifi,
-          color: Colors.white,
-          size: 35,
-        ),
-        margin: EdgeInsets.zero,
-        snackStyle: SnackStyle.GROUNDED,
-      );
+        Get.closeCurrentSnackbar();
       }
     }
   }

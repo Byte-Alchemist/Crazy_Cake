@@ -1,7 +1,7 @@
+import 'package:crazy_cake/screens/account/account_Screen.dart';
 import 'package:crazy_cake/screens/checkout/cart_screen.dart';
 import 'package:crazy_cake/screens/chat/chat_screen.dart';
 import 'package:crazy_cake/screens/splash/home_screen.dart';
-import 'package:crazy_cake/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -14,17 +14,11 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   int pageIndex = 0;
 
-  void OnTapTrapped(int index) {
-   setState(() {
-     pageIndex = index;
-   });
-  }
-
-  final List _pages = [
+  final List<Widget> _pages = [
     const HomeScreen(),
     const CartScreen(),
     const ChatScreen(),
-     const ProfileScreen(),
+    const AccountScreen(),
   ];
 
   @override
@@ -32,97 +26,40 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: _pages[pageIndex],
-      bottomNavigationBar: Container(
-      height: 60,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 0;
-              });
-            },
-            icon: pageIndex == 0
-                ? const Icon(
-                    Icons.home_filled,
-                    color: Colors.black26,
-                   size: 20,
-                  )
-                : const Icon(
-                    Icons.home_outlined,
-                   color: Colors.black26,
-                    size: 20,
-                  ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        currentIndex: pageIndex,
+        onTap: (index) {
+          setState(() {
+            pageIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black26,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home_filled),
+            label: 'Home',
           ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 1;
-              });
-            },
-            icon: pageIndex == 1
-                ? const Icon(
-                    Icons.shopping_cart,
-                    color: Colors.black26,
-                    size: 20,
-                  )
-                : const Icon(
-                    Icons.shopping_cart_outlined,
-                   color: Colors.black26,
-                    size: 20,
-                  ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart_outlined),
+            activeIcon: Icon(Icons.shopping_cart),
+            label: 'Cart',
           ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 2;
-              });
-            },
-            icon: pageIndex == 2
-                ? const Icon(
-                    Icons.chat_rounded,
-                    color: Colors.black26,
-                    size: 20,
-                  )
-                : const Icon(
-                    Icons.chat_outlined,
-                   color: Colors.black26,
-                    size: 20,
-                  ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_outlined),
+            activeIcon: Icon(Icons.chat_rounded),
+            label: 'Chat',
           ),
-          IconButton(
-            enableFeedback: false,
-            onPressed: () {
-              setState(() {
-                pageIndex = 3;
-              });
-            },
-            icon: pageIndex == 3
-                ? const Icon(
-                    Icons.person,
-                   color: Colors.black26,
-                    size: 20,
-                  )
-                : const Icon(
-                    Icons.person_outline,
-                    color: Colors.black26,
-                    size: 20,
-                  ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            activeIcon: Icon(Icons.person),
+            label: 'Account',
           ),
         ],
       ),
-    )
     );
   }
 }
