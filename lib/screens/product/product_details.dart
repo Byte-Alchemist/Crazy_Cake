@@ -285,24 +285,17 @@ class _ProductDetailsState extends State<ProductDetails> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       _buildContainer("1/2 kg"),
-
                       _buildContainer("1 kg"),
-
                       _buildContainer("2 kg"),
-
                       _buildContainer("3 kg"),
- 
                       _buildContainer("4 kg"),
                     ],
                   ),
-            //Make a review section
-                  
+                  //Make a review section
                 ],
               ),
             )
           ],
-          
-
         ),
       ),
       bottomSheet: Container(
