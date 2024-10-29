@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
@@ -19,6 +20,9 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -26,7 +30,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 400,
+              height: screenHeight * 0.4, // 40% of screen height
               width: double.infinity,
               color: Colors.grey[300],
               child: Stack(
@@ -47,79 +51,34 @@ class _ProductDetailsState extends State<ProductDetails> {
                         .toList(),
                   ),
                   Positioned(
-                      top: 30,
-                      left: 20,
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                                icon: const Icon(
-                                  Icons.arrow_back,
-                                  size: 20,
-                                  color: Colors.black,
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                          ),
-                        ],
-                      )),
+                    top: 30,
+                    left: 20,
+                    child: _buildCircleIconButton(Icons.arrow_back, () {
+                      Navigator.pop(context);
+                    }),
+                  ),
                   Positioned(
-                      top: 30,
-                      right: 80,
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                                icon: const Icon(
-                                  Icons.favorite,
-                                  size: 20,
-                                  color: Colors.black,
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                          ),
-                        ],
-                      )),
+                    top: 30,
+                    right: 80,
+                    child: _buildCircleIconButton(Icons.favorite, () {
+                      // Handle favorite action
+                    }),
+                  ),
                   Positioned(
-                      top: 30,
-                      right: 20,
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconButton(
-                                icon: const Icon(
-                                  Icons.share,
-                                  size: 20,
-                                  color: Colors.black,
-                                ),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                          ),
-                        ],
-                      )),
+                    top: 30,
+                    right: 20,
+                    child: _buildCircleIconButton(Icons.share, () {
+                      // Handle share action
+                    }),
+                  ),
                   Positioned(
                     bottom: 20,
                     right: 80,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Align(
+                      alignment: Alignment.center,
                       child: Container(
                         height: 70,
-                        width: 210,
+                        width: screenWidth * 0.6, // Adjust width
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10),
@@ -157,40 +116,38 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Text(
+                      const Text(
                         "Cake",
                         style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
-                      Spacer(),
-                      Icon(Icons.star, color: Colors.yellow),
-                      Text(
+                      const Spacer(),
+                      const Icon(Icons.star, color: Colors.yellow),
+                      const Text(
                         "4.5",
                         style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
-                  const Row(
+                  Row(
                     children: [
-                      Text(
+                      const Text(
                         "Chocolate Cake",
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      Spacer(),
-                      Icon(Icons.add_box, color: Colors.green),
+                      const Spacer(),
+                      const Icon(Icons.add_box, color: Colors.green),
                     ],
                   ),
                   const Text(
@@ -223,37 +180,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ],
                       ),
                       const Spacer(),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.black,
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                            icon: const Icon(
-                              Icons.message,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            }),
-                      ),
+                      _buildCircleIconButton(Icons.message, () {
+                        // Handle message action
+                      }),
                       const SizedBox(width: 10),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.black,
-                          shape: BoxShape.circle,
-                        ),
-                        child: IconButton(
-                            icon: const Icon(
-                              Icons.call_made,
-                              size: 20,
-                              color: Colors.white,
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            }),
-                      ),
+                      _buildCircleIconButton(Icons.call_made, () {
+                        // Handle call action
+                      }),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -265,7 +198,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                         fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
-                  // write loream in text
                   const Text(
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat,",
                     style: TextStyle(fontSize: 15, color: Colors.grey),
@@ -279,22 +211,25 @@ class _ProductDetailsState extends State<ProductDetails> {
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 10),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      _buildContainer("1/2 kg"),
-                      _buildContainer("1 kg"),
-                      _buildContainer("2 kg"),
-                      _buildContainer("3 kg"),
-                      _buildContainer("4 kg"),
-                    ],
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _buildContainer("1/2 kg"),
+                        _buildContainer("1 kg"),
+                        _buildContainer("2 kg"),
+                        _buildContainer("3 kg"),
+                        _buildContainer("4 kg"),
+                      ],
+                    ),
                   ),
-                  //Make a review section
                 ],
               ),
-            )
+            ),
+            SizedBox(height: 200,)
           ],
         ),
       ),
@@ -333,7 +268,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               onPressed: () {},
               child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.shopping_cart,
                     color: Colors.black,
                   ),
@@ -350,10 +285,24 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 
+  Widget _buildCircleIconButton(IconData icon, VoidCallback onPressed) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      child: IconButton(
+        icon: Icon(icon, size: 20, color: Colors.black),
+        onPressed: onPressed,
+      ),
+    );
+  }
+
   Widget _buildContainer(String text) {
     return Container(
       height: 40,
-      width: 60,
+      width: MediaQuery.of(context).size.width * 0.2,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

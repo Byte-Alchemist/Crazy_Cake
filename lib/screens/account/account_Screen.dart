@@ -12,6 +12,8 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -22,8 +24,8 @@ class _AccountScreenState extends State<AccountScreen> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(20),
-              height: 340,
+              padding: EdgeInsets.all(screenWidth * 0.05),
+              height: screenWidth * 0.85,
               width: double.infinity,
               color: Colors.grey[300],
               child: Column(
@@ -34,20 +36,21 @@ class _AccountScreenState extends State<AccountScreen> {
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(05),
-                        ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                      onPressed: () {
-                        Get.toNamed("/profileDetails");
-                      },
-                      child: const Text(
-                        "View Profile",
-                        style: TextStyle(color: Colors.white),
-                      )),
-                  const SizedBox(height: 20),
+                    ),
+                    onPressed: () {
+                      Get.toNamed("/profileDetails");
+                    },
+                    child: const Text(
+                      "View Profile",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(height: screenWidth * 0.05),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -57,9 +60,9 @@ class _AccountScreenState extends State<AccountScreen> {
                       _buildIconButton(Icons.notifications, "Notifications"),
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: screenWidth * 0.05),
                   Container(
-                    padding: const EdgeInsets.all(10),
+                    padding: EdgeInsets.all(screenWidth * 0.025),
                     height: 60,
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -74,9 +77,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           size: 20,
                           color: Colors.red,
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
+                        SizedBox(width: 10),
                         Text("Refund amount"),
                         Spacer(),
                         Text(
@@ -90,31 +91,19 @@ class _AccountScreenState extends State<AccountScreen> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: screenWidth * 0.05),
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Perks for you",
-                      textAlign: TextAlign.left,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
+                  const Text(
+                    "Perks for you",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: screenWidth * 0.02),
                   _buildListTile(
                       Icons.star_border_rounded, "Premium Subscription"),
-                  const Divider(),
-                  _buildListTile(Icons.card_giftcard, "Gift Cards"),
                   const Divider(),
                   _buildListTile(Icons.card_giftcard, "Gift Cards"),
                   const Divider(),
@@ -126,57 +115,51 @@ class _AccountScreenState extends State<AccountScreen> {
                     "General",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: screenWidth * 0.02),
                   _buildListTile(Icons.question_mark_rounded, "Help & Support"),
                   const Divider(),
-                  _buildListTile(Icons.build_circle_rounded, "For Buisness"),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  _buildListTile(Icons.build_circle_rounded, "For Business"),
+                  SizedBox(height: screenWidth * 0.05),
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          side: const BorderSide(color: Colors.black, width: 1),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(05),
-                          ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        side: const BorderSide(color: Colors.black, width: 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                        onPressed: () {
-                          showDynamicDialog(
-                            title: 'Logout',
-                            content: 'Are you sure you want to logout?',
-                            onConfirm: () {
-                              ApiPref().removeUserToken();
-                              Get.offAllNamed('/login');
-                            },
-                            cancelText: "No",
-                            confirmText: "Yes",
-                            
-                          );
-                        },
-                        child: const Text(
-                          "Logout",
-                          style: TextStyle(color: Colors.black),
-                        )),
+                      ),
+                      onPressed: () {
+                        showDynamicDialog(
+                          title: 'Logout',
+                          content: 'Are you sure you want to logout?',
+                          onConfirm: () {
+                            ApiPref().removeUserToken();
+                            Get.offAllNamed('/login');
+                          },
+                          cancelText: "No",
+                          confirmText: "Yes",
+                        );
+                      },
+                      child: const Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
                   const Align(
-                      alignment: Alignment.center,
-                      child: Text("Version 1.0.0",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                          ))),
-                  const SizedBox(
-                    height: 20,
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Version 1.0.0",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -188,11 +171,13 @@ class _AccountScreenState extends State<AccountScreen> {
   }
 
   Widget _buildIconButton(IconData icon, String text) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: 100,
-        width: 120,
+        height: screenWidth * 0.25,
+        width: screenWidth * 0.25,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.black, width: 0.5),
@@ -200,12 +185,9 @@ class _AccountScreenState extends State<AccountScreen> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(icon, size: 20),
-            const SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: screenWidth * 0.02),
             Text(text)
           ],
         ),

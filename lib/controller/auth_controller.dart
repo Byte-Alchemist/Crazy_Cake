@@ -38,9 +38,10 @@ class AuthController extends GetxController {
         Get.snackbar('Error', responseData["detail"]);
       }
     } catch (e) {
+      print(e);
       Get.snackbar(
           backgroundColor: Colors.red,
-          "Error",
+          e.toString(),
           'Something went wrong , please try again');
     } finally {
       isLoading(false);

@@ -1,13 +1,12 @@
 import 'package:crazy_cake/screens/account/account_Screen.dart';
 import 'package:crazy_cake/screens/auth/Otp_verfication.dart';
-import 'package:crazy_cake/home/dashboard.dart';
+import 'package:crazy_cake/screens/home/dashboard_screen.dart';
 import 'package:crazy_cake/screens/auth/login_screen.dart';
 import 'package:crazy_cake/screens/product/product_details.dart';
 import 'package:crazy_cake/screens/splash/onboard.dart';
 import 'package:crazy_cake/screens/profile/profile_details.dart';
 import 'package:crazy_cake/screens/auth/user_registration.dart';
 import 'package:crazy_cake/screens/splash/splash_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
