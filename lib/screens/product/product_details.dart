@@ -122,32 +122,32 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      const Text(
+                      Text(
                         "Cake",
                         style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
-                      const Spacer(),
-                      const Icon(Icons.star, color: Colors.yellow),
-                      const Text(
+                      Spacer(),
+                      Icon(Icons.star, color: Colors.yellow),
+                      Text(
                         "4.5",
                         style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Row(
+                  const Row(
                     children: [
-                      const Text(
+                      Text(
                         "Chocolate Cake",
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      const Spacer(),
-                      const Icon(Icons.add_box, color: Colors.green),
+                      Spacer(),
+                      Icon(Icons.add_box, color: Colors.green),
                     ],
                   ),
                   const Text(
@@ -229,7 +229,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
             ),
-            SizedBox(height: 200,)
+            const SizedBox(height: 200,)
           ],
         ),
       ),
@@ -266,13 +266,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
               ),
               onPressed: () {},
-              child: Row(
+              child: const Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.shopping_cart,
                     color: Colors.black,
                   ),
-                  const Text(
+                  Text(
                     "Buy Now",
                     style: TextStyle(fontSize: 20, color: Colors.black),
                   ),

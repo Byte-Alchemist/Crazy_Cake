@@ -6,7 +6,7 @@ import 'dart:convert';
 
 class OtpController extends GetxController {
   var isLoading = false.obs;
-  final String baseURL = "http://13.233.15.222/";
+  final String baseURL = "http://13.233.15.222";
 
   Future<void> verifyOTP(OTPVerificationModel otpVerificationModel) async {
     isLoading(true);

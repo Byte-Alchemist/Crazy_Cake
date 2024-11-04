@@ -1,5 +1,6 @@
 import 'package:crazy_cake/controller/otp_controller.dart';
 import 'package:crazy_cake/models/otpverification_model.dart';
+import 'package:crazy_cake/utils/colors.dart';
 import 'package:crazy_cake/widgets/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,11 +22,11 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.white,
         title: const Text("Otp Verification"),
         centerTitle: true,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 28.0, right: 28.0),
@@ -56,7 +57,7 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
               Text(
                 "Enter the OTP sent to ${widget.phoneNumber}",
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 15, color: Color(0xff5C1919)),
+                style: const TextStyle(fontSize: 15, color: AppColor.primary),
               ),
               const SizedBox(
                 height: 20,
@@ -87,7 +88,7 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(05),
                     ),
-                    backgroundColor: const Color(0xff5C1919),
+                    backgroundColor: AppColor.primary,
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 10),
                   ),
@@ -95,7 +96,7 @@ class _OtpVerficationPageState extends State<OtpVerficationPage> {
                     ()=> otpController.isLoading.value? KloadindIndicator() : const Text(
                       "Verify",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: AppColor.white,
                         fontSize: 20,
                       ),
                     ),

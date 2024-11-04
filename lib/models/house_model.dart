@@ -28,7 +28,7 @@ class HouseRoom {
 List<HouseRoom> houseList = [
   HouseRoom(
     name: "Sweet Layers House",
-    place: "Kathmandu, Nepal",
+    place: "Uttara, Dhaka",
     price: "1250",
     bath: "2",
     height: "12.5",
@@ -40,7 +40,7 @@ List<HouseRoom> houseList = [
   ),
   HouseRoom(
     name: "Frost & Flour",
-    place: "Surkhet, Nepal",
+    place: "Dhanmondi, Dhaka",
     price: "640",
     bath: "3",
     height: "22.5",

@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 
 class AppRoutes {
   static final routes = [
-    GetPage(name: "/splash", page: () => SplashScreen()),
+    GetPage(name: "/splash", page: () => const SplashScreen()),
     GetPage(
         name: "/",
         page: () => const OnboardPage(),
@@ -19,7 +19,7 @@ class AppRoutes {
         transitionDuration: const Duration(milliseconds: 300)),
     GetPage(
         name: "/login",
-        page: () => const LoginScreen(),
+        page: () =>  LoginScreen(),
         transition: Transition.rightToLeftWithFade,
         transitionDuration: const Duration(milliseconds: 300)),
     GetPage(
@@ -34,7 +34,7 @@ class AppRoutes {
         transitionDuration: const Duration(milliseconds: 300)),
     GetPage(
         name: "/otpVerification",
-        page: () => const OtpVerficationPage(),
+        page: () => OtpVerficationPage(),
         transition: Transition.downToUp,
         transitionDuration: const Duration(milliseconds: 300)),
     GetPage(

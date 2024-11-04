@@ -125,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.yellow,
                           ),
                           Text(
-                            "Kathmandu",
+                            "Dhaka",
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           SizedBox(

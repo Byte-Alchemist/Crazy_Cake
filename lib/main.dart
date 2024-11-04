@@ -1,5 +1,6 @@
 import 'package:crazy_cake/controller/network_Contoller.dart';
 import 'package:crazy_cake/routes/routes.dart';
+import 'package:crazy_cake/theme/app_theme.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ void main() async {
      backgroundColor: Colors.white,
      defaultDevice: Devices.ios.iPhone13ProMax,
       isToolbarVisible: true,
-      availableLocales: [Locale('en', 'US')],
+      availableLocales: const [Locale('en', 'US')],
        tools: const [
         // Device selection controls
         DeviceSection(
@@ -58,18 +59,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context), 
       builder: DevicePreview.appBuilder,
-      theme: ThemeData(
-          elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(05),
-              ),
-              backgroundColor: const Color(0xff5C1919),
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-            ),
-          ),
-          primarySwatch: Colors.blue,
-          fontFamily: "jost"),
+      darkTheme: darkTheme,
+      theme: lightTheme,
       initialRoute: "/splash",
       getPages: AppRoutes.routes,
       defaultTransition: Transition.fadeIn,

@@ -1,7 +1,8 @@
 import 'package:crazy_cake/screens/account/account_Screen.dart';
+import 'package:crazy_cake/screens/search/search_screen.dart';
 import 'package:crazy_cake/screens/checkout/cart_screen.dart';
-import 'package:crazy_cake/screens/chat/chat_screen.dart';
 import 'package:crazy_cake/screens/home/home_screen.dart';
+import 'package:crazy_cake/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -17,17 +18,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> _pages = [
     const HomeScreen(),
     const CartScreen(),
-    const ChatScreen(),
+    const SearchScreen(),
     const AccountScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.white,
       body: _pages[pageIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColor.white,
         currentIndex: pageIndex,
         onTap: (index) {
           setState(() {
@@ -49,9 +50,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
-            activeIcon: Icon(Icons.chat_rounded),
-            label: 'Chat',
+            icon: Icon(Icons.search_outlined),
+            activeIcon: Icon(Icons.search),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),

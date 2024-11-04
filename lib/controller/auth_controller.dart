@@ -10,74 +10,99 @@ import 'package:http/http.dart' as http;
 class AuthController extends GetxController {
   static const String baseURL = 'http://13.233.15.222';
 
-  RxBool isLoading = false.obs;
+  // Observables and form management
+  final isLoading = false.obs;
+  final obscureText = true.obs;
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+  final nameController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final confirmPasswordController = TextEditingController();
 
-  Future<void> UserRegister(UserRegistraionModel userRegisterModel) async {
+  // Toggle password visibility
+  void togglePasswordVisibility() => obscureText.toggle();
+
+  // Register user function
+  Future<void> userRegister(UserRegistraionModel userRegisterModel) async {
+    isLoading(true);
     try {
-
-      isLoading(true);
       var url = Uri.parse('$baseURL/auth/v1/register');
-      var response = await http.post(url,
-          headers: {
-            'Content-Type': 'application/json',
-            'accept': 'application/json',
-          },
-          body: jsonEncode(userRegisterModel.toJson()));
+      var response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': 'application/json',
+        },
+        body: jsonEncode(userRegisterModel.toJson()),
+      );
 
       var responseData = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var responseData = jsonDecode(response.body);
         Get.snackbar(
-            backgroundColor: Colors.blue,
-            colorText: Colors.white,
-            'Success',
-            'A OTP has been sent to your phone number');
-        Get.offAll(() => OtpVerficationPage(
-            phoneNumber: userRegisterModel.phoneNumber.toString()));
+          'Success',
+          'An OTP has been sent to your phone number',
+          backgroundColor: Colors.blue,
+          colorText: Colors.white,
+        );
+        Get.offAll(() =>
+            OtpVerficationPage(phoneNumber: userRegisterModel.phoneNumber));
       } else {
-        Get.snackbar('Error', responseData["detail"]);
+        Get.snackbar('Error', responseData["detail"],
+            backgroundColor: Colors.red);
       }
     } catch (e) {
-      print(e);
-      Get.snackbar(
-          backgroundColor: Colors.red,
-          e.toString(),
-          'Something went wrong , please try again');
+      Get.snackbar('Error', 'Something went wrong, please try again',
+          backgroundColor: Colors.red);
     } finally {
       isLoading(false);
     }
   }
 
-  Future<void> UserLogin(UserLoginModel userLoginModel) async {
+  // User login function
+  Future<void> userLogin(UserLoginModel userLoginModel) async {
+    isLoading(true);
     try {
-      isLoading(true);
       var url = Uri.parse('$baseURL/auth/v1/login');
-      var response = await http.post(url,
-          headers: {
-            'Content-Type': 'application/json',
-            'accept': 'application/json',
-          },
-          body: jsonEncode(userLoginModel.toJson()));
+      var response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': 'application/json',
+        },
+        body: jsonEncode(userLoginModel.toJson()),
+      );
+
+      var responseData = jsonDecode(response.body);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var responseData = jsonDecode(response.body);
-        var token = responseData['token']["access_token"];
-        print(token);
-        ApiPref().setUserToken(token);
-        Get.snackbar(
-            backgroundColor: Colors.green, 'Success', 'Logged in Successfully');
-        Get.offAllNamed('/home');
+        var token = responseData['token']?["access_token"];
+        if (token != null) {
+          ApiPref().setUserToken(token);
+          Get.snackbar(
+            'Success',
+            'Logged in Successfully',
+            backgroundColor: Colors.green,
+            colorText: Colors.white,
+          );
+          Get.offAllNamed('/home');
+        } else {
+          Get.snackbar('Error', 'Token not found', backgroundColor: Colors.red);
+        }
       } else {
-        
-        var responseData = jsonDecode(response.body);
-        Get.snackbar(backgroundColor: Colors.red, "Error", responseData["detail"]);
+        Get.snackbar('Error', responseData["detail"],
+            backgroundColor: Colors.red);
       }
     } catch (e) {
-      Get.snackbar(
-          backgroundColor: Colors.red,
-          "Error",
-          'Something went wrong , please try again');
+      Get.snackbar('Error', 'Something went wrong, please try again',
+          backgroundColor: Colors.red);
     } finally {
       isLoading(false);
     }
+  }
+
+  @override
+  void onClose() {
+    phoneController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }
